@@ -1,1 +1,6 @@
-int floaty;
+int floaty; // this is a single line comment
+float while(; /* this is a multiline comment
+more stuff here */
+main() {
+/* another multiline comment */
+}

@@ -1,0 +1,13 @@
+Identifier,Pattern,Regex,Ignore
+COMMENT,#.*,y,y
+WHITESPACE,\s+,y,y
+EQ,=,n,n
+PLUS,+,n,n
+STAR,*,n,n
+QMARK,?,n,n
+OR,|,n,n
+LPAREN,(,n,n
+RPAREN,),n,n
+SEMICOLON,;,n,n
+ID,[a-zA-Z]\w*,y,n
+STRING,'[^']*'|”[^”]*”,y,n

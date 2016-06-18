@@ -1,0 +1,17 @@
+# the first node is the root node. In this case, it is a <syntax> node
+syntax = syntax_rule+;
+
+syntax_rule = meta_identifier EQ definition_list SEMICOLON;
+
+definition_list = single_definition (OR single_definition)*;
+
+single definition = expr+;
+
+expr = grouped_sequence
+    | ID
+    | STRING
+    | expr QMARK
+    | empty;
+
+grouped sequence = LPAREN definition_list RPAREN;
+# The brackets allow any definition list to be an expr

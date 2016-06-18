@@ -1,5 +1,6 @@
 Identifier,Pattern,Regex,Ignore
-COMMENT,/\*.*?\*/,y,y
+MULTILINE_COMMENT,/\*[\s\S]*?\*/,y,y
+INLINE_COMMENT,//.*,y,y
 WHITESPACE,\s+,y,y
 BOOLEAN,boolean,n,n
 BREAK,break,n,n

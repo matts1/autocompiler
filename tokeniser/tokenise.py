@@ -18,6 +18,7 @@ for line in csv.DictReader(token_file):
     pattern = line['Pattern']
     regex = line['Regex'].lower()
     ignore = line['Ignore'].lower()
+    # TODO: disallow duplicate idents
 
     if ident == 'EOF': reporter.report('EOF is a reserved identifier')
 
@@ -64,11 +65,12 @@ while input_file:
             ignore_match = ignore
 
     last_pos = Position(last_pos.line_finish, last_pos.char_finish, longest_match)
-    if longest_match == '': reporter.report('Invalid token at %s' % last_pos, fatal=True)
+    if longest_match == '':
+        reporter.report('Invalid token at %s (%s)' % (last_pos, input_file[:10]), fatal=True)
     if not ignore_match: tokens.append(Token(last_pos, longest_match, kind))
     input_file = input_file[len(longest_match):]
 
 last_pos = Position(last_pos.line_finish, last_pos.char_finish, '')
 tokens.append(Token(last_pos, '', 'EOF'))
-
+print(tokens)
 reporter.stop_on_err()
